@@ -1,0 +1,53 @@
+pre.line-numbers {
+
+    display: block;
+    max-width: attr(width);
+    
+    // optional title
+    &[title] {
+        padding-top: 15px;
+        &::before {
+            content: attr(title);
+            margin: 0 5px 5px;
+            height: 1em;
+            display: block;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    
+    background-color: #fff;
+
+    margin: 2em auto 2em 0;
+    padding: 0.5em;
+
+    border-radius: .25em;
+    box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.45);
+
+    line-height: 0;
+    counter-reset: line;
+    white-space: pre-line;
+
+    font-family: monospace;
+    font-size: medium;
+
+    *::selection {
+        background-color: #addfff;
+    }
+
+    span {
+        display: inline-block;
+        line-height: 1.4rem;
+        counter-increment: line 1;
+        &::before {
+            
+            content: counter(line);
+            display: inline-block;
+            border-right: 1px solid #ddd;
+            padding: 0 .5em;
+            margin-right: .5em;
+            color: #888;
+        }
+        
+    }
+}
