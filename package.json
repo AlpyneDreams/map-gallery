@@ -4,7 +4,7 @@
   "description": "A minimal Electron application",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "lessc src/view/style.less src/view/style.css && electron ."
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [

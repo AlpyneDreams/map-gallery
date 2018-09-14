@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Hello World!</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-        <!-- All of the Node.js APIs are available in this renderer process. -->
-        We are using Node.js <script>document.write(process.versions.node)</script>,
-        Chromium <script>document.write(process.versions.chrome)</script>,
-        and Electron <script>document.write(process.versions.electron)</script>.
+	<meta charset="UTF-8">
+	<title>Hello World!</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	<h1>Hello World!</h1>
+	<!-- All of the Node.js APIs are available in this renderer process. -->
+	We are using Node.js <script>document.write(process.versions.node)</script>,
+	Chromium <script>document.write(process.versions.chrome)</script>,
+	and Electron <script>document.write(process.versions.electron)</script>.
 
-        <script>
-            // You can also require other files to run in this process
-            require('./renderer.js')
-        </script>
-    </body>
+	<main>
+		<div class="item">
+			<img src="img/mayan1.jpg">
+			mayan1
+		</div>
+		<div class="item">
+			<img src="img/mayan2a.jpg">
+			mayan2a
+		</div>
+	</main>
+
+	<script>
+		// You can also require other files to run in this process
+		require('./renderer.js')
+	</script>
+	
 </html>
