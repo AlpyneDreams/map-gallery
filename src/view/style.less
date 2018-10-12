@@ -1,22 +1,39 @@
 
-@import "steam/blacksteam/blacksteam.less";
+//@import "steam/blacksteam/blacksteam.less";
+@import "steam/greensteam/greensteam.less";
 
-main {
+html, body {
+    height: 100%;
+
+    margin: 0 !important;
+}
+
+
+.gallery {
     display: flex;
 
     .item {
+        .border();
+
         width: 200px;
         height: 200px;
         margin: 5px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     
         cursor: pointer;
-    
-        border: 1px solid black;
 
+        &:before {
+            content: attr(name);
+        }
+    
         img {
-            max-width:100%;
+            max-width: 100%;
             max-height:100%;
             object-fit: contain;
+            border: none;
         }
     }
 }

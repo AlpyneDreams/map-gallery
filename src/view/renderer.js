@@ -1,3 +1,32 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
+const {ipcRenderer, remote} = require('electron')
+
+
+$ = (x) => document.querySelector(x)
+$$ = (x) => document.querySelectorAll(x)
+
+window.onload = function() {
+
+    $$(".gallery .item").forEach(x => {
+        x.addEventListener('click', function(e) {
+            ipcRenderer.send('launch-map', e.currentTarget.getAttribute('name'))
+        })
+
+        if (!x.firstElementChild || x.firstElementChild.tagName != 'IMG') {
+            var img = document.createElement("img");
+            img.setAttribute('src', 'img/' + x.getAttribute('name') + '.jpg')
+            x.insertAdjacentElement('afterbegin', img)
+        }
+    })
+}
+
+$('.close').addEventListener('click', function() {
+    remote.getCurrentWindow().close()
+})
+
+$('.minimize').addEventListener('click', function() {
+    remote.getCurrentWindow().minimize()
+})
+

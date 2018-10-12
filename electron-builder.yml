@@ -1,0 +1,12 @@
+directories:
+  buildResources: build
+  output: dist
+files:
+  - 'src/**/*'
+  - '!src/**/*.less'
+extraResources: 
+  - from: build/command_template.txt
+    to: command_template.txt
+win:
+  appId: Lever.MapGallery
+  target: zip

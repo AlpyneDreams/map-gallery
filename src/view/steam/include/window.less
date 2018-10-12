@@ -1,0 +1,153 @@
+/*** Window ***/
+
+@default-pad: 10px;
+@titlebar-height: 18px;
+
+.titlebar-common() {
+    -webkit-app-region: drag;
+
+    display: block;
+
+    float: right;
+
+    width: 100%;
+    height: @titlebar-height;
+    line-height: @titlebar-height;
+
+    text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 12px;
+	color: white;
+	font-weight: bold;
+}
+
+.titlebar-icons() {
+    text-indent: 24px;
+    background-image: @url-steamico, @url-minimize, @url-close;
+    background-repeat: no-repeat;
+    background-position: top left, top right 20px, top right;
+    background-origin: content-box;
+}
+
+.window {
+    position: static;
+	background-color: @light-primary;
+	padding: @default-pad;
+	box-sizing: border-box;
+	margin: 0 0 20px;
+	//max-width: @window-width;
+
+	// titlebar
+	&.titled {
+		padding-top: @default-pad+@titlebar-height;
+
+		&:before {
+            .titlebar-common();
+            .titlebar-icons();
+
+            margin-top: -@titlebar-height;
+
+			content: attr(name);
+		}
+	}
+
+	&:not(.no-resize) {
+		// resize handle
+		&::after {
+			width: 12px;
+			height: 12px;
+
+			position: fixed;
+			bottom: 5px;
+			right: 5px;
+			float: right;
+
+			content: '';
+			background-image: @url-resize;
+
+		}
+	}
+}
+
+.window.half {
+	max-width: @window-half;
+	width: 100%;
+	align-self: center;
+}
+
+.window:not(.titled) > .titlebar:first-child {
+    margin-top: -10px;
+    padding-top: 10px;
+}
+
+
+.window .titlebar {
+
+    .titlebar-common();
+
+    margin-bottom: 10px;
+
+    &:not(.custom) { .titlebar-icons(); }
+
+    &.custom {
+        display: flex;
+        flex-direction: row;
+
+        .icon {
+            display: block;
+            background-repeat: no-repeat;
+            background-origin: content-box;
+            width: 18px;
+            height: 18px;
+        }
+
+        .button {
+            box-sizing: border-box;
+            background-origin: border-box;
+
+            .border();
+            &:active {
+                .border-inverted();
+            }
+        }
+
+        .steamico {
+            background-image: @url-steamico;
+            margin-right: 6px;
+        }
+
+        .minimize {
+            background-image: @url-minimize2;
+            margin-right: 2px;
+            
+            -webkit-app-region: no-drag;
+            cursor: pointer;
+        }
+
+        .close {
+            background-image: @url-close2;
+            
+            -webkit-app-region: no-drag;
+            cursor: pointer;
+        }
+
+        .title {
+            flex-grow: 10;
+        }
+        
+
+        
+
+
+    }
+
+	/*&::after {
+		float: right;
+		word-spacing: -3px;
+		content: @url-minimize " " @url-close;
+    }*/
+    
+
+	// .inactive - no borders around [-] and [x]
+	//&.inactive::after {content: @url-minimize2 " " url("close2.png");}
+}
