@@ -1,3 +1,11 @@
+# map-gallery
+
+![Screenshot](https://owo.whats-th.is/950bd3.png)
+
+Launch command for hl.exe is in `command_template.txt` in the `build` folder.
+
+Avaliable map data is embedded in the HTML.
+
 # electron-quick-start
 
 **Clone and run for a quick way to see Electron in action.**
