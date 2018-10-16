@@ -1,6 +1,6 @@
 {
     "name": "map-gallery",
-    "version": "v1.0.0-alpha.1",
+    "version": "v1.0.0-alpha.2",
     "description": "Map picker for goldsrc/source games",
     "main": "src/main.js",
     "scripts": {

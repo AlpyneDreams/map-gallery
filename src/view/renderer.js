@@ -7,16 +7,28 @@ const {ipcRenderer, remote} = require('electron')
 $ = (x) => document.querySelector(x)
 $$ = (x) => document.querySelectorAll(x)
 
-window.onload = function() {
+/** @type {function(HTMLElement): string} */
+function getImagePath(x) {
+    var path = x.getAttribute('name')
+    if (x.parentElement.className.includes('folder')) {
+        path = `${x.parentElement.getAttribute('name')}/${path}`
+    }
+    
+    return `img/${path}.jpg`
+}
 
-    $$(".gallery .item").forEach(x => {
+window.onload = function() {
+    /**
+     * @param {HTMLElement} x
+     */
+    $$('.gallery .item').forEach(x => {
         x.addEventListener('click', function(e) {
             ipcRenderer.send('launch-map', e.currentTarget.getAttribute('name'))
         })
 
         if (!x.firstElementChild || x.firstElementChild.tagName != 'IMG') {
-            var img = document.createElement("img");
-            img.setAttribute('src', 'img/' + x.getAttribute('name') + '.jpg')
+            var img = document.createElement('img');
+            img.setAttribute('src', getImagePath(x))
             x.insertAdjacentElement('afterbegin', img)
         }
     })
