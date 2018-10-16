@@ -10,3 +10,4 @@ extraResources:
 win:
   appId: Lever.MapGallery
   target: zip
+  asar: false
